@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Welcome from "./components/Welcome";
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList";
@@ -23,10 +23,7 @@ function AppContent() {
   return (
     <>
       <Routes>
-        <Route
-          path="/"
-          element={<Welcome onStart={handleStart} />}
-        />
+        <Route path="/" element={<Welcome onStart={handleStart} />} />
 
         <Route
           path="/products"
@@ -37,12 +34,13 @@ function AppContent() {
                 onLogoClick={handleLogoClick}
               />
 
-              {/* Total Cart Amount Section */}
               <div style={{ textAlign: "center", marginTop: 20 }}>
                 <h2>
                   Total Cart Amount: $
-                  {cart.reduce((t, item) =>
-                    t + parseFloat(item.cost.substring(1)) * item.quantity, 0
+                  {cart.reduce(
+                    (t, item) =>
+                      t + parseFloat(item.cost.substring(1)) * item.quantity,
+                    0
                   ).toFixed(2)}
                 </h2>
               </div>
@@ -64,8 +62,8 @@ function AppContent() {
 
 export default function App() {
   return (
-    <Router>
+    <BrowserRouter basename="/e-plantShopping">
       <AppContent />
-    </Router>
+    </BrowserRouter>
   );
 }
