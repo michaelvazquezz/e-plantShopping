@@ -1,0 +1,168 @@
+/* src/components/Welcome.css */
+
+/* Variables rápidas */
+:root {
+    --overlay: rgba(0, 0, 0, 0.55);
+    --accent: #2dac48;
+    /* verde botón */
+    --max-width: 1200px;
+}
+
+/* contenedor del hero con imagen de fondo */
+.welcome-hero {
+    position: relative;
+    height: 100vh;
+    /* ← ocupa toda la pantalla */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background-image: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* overlay oscuro para mejorar contraste del texto */
+.welcome-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.38) 50%, rgba(0, 0, 0, 0.75) 100%);
+    mix-blend-mode: multiply;
+    z-index: 0;
+    backdrop-filter: blur(2px);
+}
+
+/* inner para centrar y limitar ancho */
+.welcome-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 40px;
+    align-items: start;
+    padding: 30px;
+}
+
+/* columna izquierda: título grande */
+.left-column {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-title {
+    font-family: "Merriweather", serif;
+    font-size: 44px;
+    line-height: 1.02;
+    margin: 0 0 10px 0;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+}
+
+.title-break {
+    display: block;
+    margin-top: 6px;
+    font-size: 56px;
+}
+
+/* pequeña línea decorativa */
+.underline {
+    width: 40px;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+    margin: 18px 0;
+    border-radius: 3px;
+}
+
+/* subtítulo pequeño */
+.hero-tag {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* botón verde estilo */
+.get-started {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(45, 172, 72, 0.25);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    font-weight: 600;
+}
+
+.get-started:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(45, 172, 72, 0.18);
+}
+
+/* columna derecha: texto largo */
+.right-column {
+    padding: 30px;
+    font-family: "Open Sans", sans-serif;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* pequeño título encima del párrafo largo */
+.hero-small-title {
+    margin: 0 0 16px 0;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.92);
+    text-align: left;
+}
+
+/* cuerpo del texto con mejor lectura */
+.hero-text {
+    background: transparent;
+    line-height: 1.7;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    max-height: 420px;
+    overflow: auto;
+    padding-right: 6px;
+    font-weight: bold;
+}
+
+/* Scrollbar (opcional, pequeña mejora visual) */
+.hero-text::-webkit-scrollbar {
+    width: 8px;
+}
+
+.hero-text::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+}
+
+/* Responsive: apilar columnas en pantallas pequeñas */
+@media (max-width: 900px) {
+    .welcome-inner {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .title-break {
+        font-size: 40px;
+    }
+
+    .right-column {
+        padding-top: 10px;
+    }
+}
